@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { CartWidget } from "./CartWidget";
 
 export const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -45,6 +46,9 @@ export const NavBar = () => {
                 {" "}
                 Contacto
               </a>
+            </li>
+            <li className="nav__item">
+              <CartWidget />
             </li>
           </ul>
         </nav>
