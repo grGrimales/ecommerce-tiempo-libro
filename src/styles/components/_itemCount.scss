@@ -1,0 +1,47 @@
+.containerAdd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.containerAdd__btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border-style: none;
+  color: $secundary;
+  cursor: pointer;
+}
+
+.containerAdd__btnDecrement {
+  margin-right: 0.5rem;
+}
+
+.containerAdd__btnDecrement,
+.containerAdd__btnIncrement {
+  background: #ff85ba;
+  width: 17%;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  opacity: 0.8;
+}
+
+.containerAdd__btnDecrement:hover,
+.containerAdd__btnIncrement:hover {
+  opacity: 1;
+}
+
+.containerAdd__btnAdd {
+  border: none;
+  background: #ff85ba;
+  border-radius: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
