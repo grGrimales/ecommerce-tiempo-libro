@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export const ItemCount = ({ initial, stock, onAdd }) => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState((initial = 1));
 
   const decrement = () => {
-    console.log(count);
     if (count > 0) {
       setCount(count - 1);
     }
@@ -15,7 +14,6 @@ export const ItemCount = ({ initial, stock, onAdd }) => {
     if (count < stock) {
       setCount(count + 1);
     } else {
-      console.log(`Solo contamos con ${stock} unidades disponibles`);
       Swal.fire({
         icon: "error",
         title: "Oops...",
