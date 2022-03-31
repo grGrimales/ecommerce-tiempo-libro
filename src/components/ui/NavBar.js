@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CartWidget } from "./CartWidget";
+import { CartWidget } from "../CartWidget";
 
 export const NavBar = () => {
   const [click, setClick] = useState(false);

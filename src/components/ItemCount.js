@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Swal from "sweetalert2";
 
 export const ItemCount = ({ initial, stock, onAdd }) => {
-  const [count, setCount] = useState((initial = 1));
+  const [count, setCount] = useState(initial);
 
   const decrement = () => {
-    if (count > 0) {
+    if (count > initial) {
       setCount(count - 1);
     }
   };
