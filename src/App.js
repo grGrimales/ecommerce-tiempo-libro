@@ -1,3 +1,4 @@
+import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { ItemListContainer } from "./components/ItemListContainer";
 import { NavBar } from "./components/ui/NavBar";
 
@@ -6,7 +7,9 @@ function App() {
     <div className="App">
       <NavBar />
 
-      <ItemListContainer greetings="Bienvenido a tiempo Libro" />
+      <ItemListContainer greetings="Tiempo Libro" />
+
+      <ItemDetailContainer/>
     </div>
   );
 }
