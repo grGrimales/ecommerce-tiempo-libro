@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom'
 import { getProductsById } from '../products/products';
 import { ItemDetail } from './ItemDetail';
 import { ItemCount } from "./ItemCount";
@@ -13,25 +14,26 @@ export const ItemDetailContainer = () => {
 
     const [productId, setProducId] = useState();
 
+
+    const { id } = useParams()
     useEffect(() => {
-        getProductsById(2)
+        getProductsById(id)
           .then((product) => {
             setProducId(product);
           })
           .catch((error) => {
             console.log(error);
           });
-      }, []);
+      }, [id]);
 
     return (
       <>
-  {productId ? <div className="cardDetail">
+  {productId ? 
+    <div className="cardDetail">
       <div className="cardDetail__container">
-      <ItemDetail productId={productId}/>
-
-       <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
+         <ItemDetail productId={productId}/>
+         <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
       </div>
-
     </div> : <Wait/>}
        
       </>
