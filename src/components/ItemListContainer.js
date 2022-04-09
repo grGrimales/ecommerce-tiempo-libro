@@ -24,7 +24,7 @@ export const ItemListContainer = ({ greetings }) => {
 
   return (
 <>
-{products ?   <div>
+{products ?   <div className="listContainer">
       <h1 className="textCenter">{greetings}</h1>
 
       <ItemList products={products} />

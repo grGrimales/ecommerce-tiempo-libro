@@ -32,18 +32,16 @@
   }
 }
 
-.header__logo {
-  width: 34%;
+.header__link{
   align-self: center;
+}
+.header__logo {
 
   @include medium {
-    // height: 7rem;
-    width: 15%;
+    width: 80%;
+   
   }
 
-  // @include xl {
-  //   width: 9%;
-  // }
 }
 
 .nav {
@@ -52,9 +50,8 @@
   grid-gap: 10px;
   list-style: none;
   text-align: center;
-  // width: 70vw;
   justify-content: end;
-  // margin-right: 2rem;
+
 
   @include max {
     display: flex;
@@ -93,7 +90,7 @@
   color: $complemetary;
 }
 
-.active {
+.activeUl {
   align-items: center;
   background-color: $primary;
   left: 0;

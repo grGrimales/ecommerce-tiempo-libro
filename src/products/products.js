@@ -3,7 +3,7 @@ const products = [
     id: 1,
     name: "Cenicienta",
     price: 100,
-    category: "cuentos-infantiles",
+    category: ["cuentos-infantiles"],
     img:
       "https://images.cdn3.buscalibre.com/fit-in/360x360/39/97/3997f7cd8b90a538f64b7cbaab96d51e.jpg",
     stock: 25,
@@ -13,7 +13,7 @@ const products = [
     id: 2,
     name: "Harry Potter y la Piedra filosofal",
     price: 80,
-    category: "literatura-fantastica",
+    category: ["literatura-fantastica"],
     img:
       "https://images.cdn3.buscalibre.com/fit-in/360x360/13/3f/133f3ee8195593a47eee5d46795ddc36.jpg",
     stock: 5,
@@ -23,7 +23,7 @@ const products = [
     id: 3,
     name: "Juego de tronos Fuego y sangre",
     price: 80,
-    category: "fantasia",
+    category: ["fantasia", 'ciencia-ficcion'],
     img:
       "https://1.bp.blogspot.com/-T6cUgtsWKAc/W_3X-1_oMHI/AAAAAAABDas/qQTWY0FiYpMUBDp3Qf-cBC_x8gM8Bjl2wCLcBGAs/s1600/George%2BR%2BR%2BMartin%2Banticipa%2Bla%2Bprecuela%2Bde%2BJuego%2Bde%2BTronos-1.jpg",
     stock: 15,
@@ -33,7 +33,7 @@ const products = [
     id: 4,
     name: "Cenicienta",
     price: 100,
-    category: "cuentos-infantiles",
+    category: ["cuentos-infantiles"],
     img:
       "https://images.cdn3.buscalibre.com/fit-in/360x360/39/97/3997f7cd8b90a538f64b7cbaab96d51e.jpg",
     stock: 25,
@@ -43,7 +43,7 @@ const products = [
     id: 5,
     name: "Harry Potter y la Piedra filosofal",
     price: 80,
-    category: "literatura-fantastica",
+    category: ["literatura-fantastica"],
     img:
       "https://images.cdn3.buscalibre.com/fit-in/360x360/13/3f/133f3ee8195593a47eee5d46795ddc36.jpg",
     stock: 5,
@@ -53,7 +53,7 @@ const products = [
     id: 6,
     name: "Juego de tronos Fuego y sangre",
     price: 80,
-    category: "fantasia",
+    category: ["fantasia", 'ciencia-ficcion'],
     img:
       "https://1.bp.blogspot.com/-T6cUgtsWKAc/W_3X-1_oMHI/AAAAAAABDas/qQTWY0FiYpMUBDp3Qf-cBC_x8gM8Bjl2wCLcBGAs/s1600/George%2BR%2BR%2BMartin%2Banticipa%2Bla%2Bprecuela%2Bde%2BJuego%2Bde%2BTronos-1.jpg",
     stock: 15,
@@ -64,7 +64,9 @@ const products = [
 const categories = [
   {id: 'fantasia', description: 'Fantasia'},
   {id: 'literatura-fantastica', description: 'Literatura'},
-  {id: 'cuentos-infantiles', description: 'Cuentos infantiles'}
+  {id: 'cuentos-infantiles', description: 'Cuentos infantiles'},
+  {id: 'ciencia-ficcion', description: 'Ciencia ficción'}
+
 ]
 
 export const getCategories = () => {
@@ -78,8 +80,8 @@ export const getCategories = () => {
 export const getProducts = (categoryId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(categoryId ? products.filter( prod => prod.category === categoryId) : products);
-    }, 2000);
+      resolve(categoryId ? products.filter( prod => prod.category.includes(categoryId) ) : products);
+    }, 500);
   });
 };
 
@@ -89,6 +91,6 @@ export const getProductsById = (id) => {
   return new Promise (resolve => {
       setTimeout(() => {
           resolve(products.find(product => product.id == id))
-      }, 2000)
+      }, 500)
   })
 }

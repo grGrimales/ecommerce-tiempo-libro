@@ -4,20 +4,35 @@
   margin: 1rem 1rem;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+
+  @include medium {
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    align-items: flex-start;
+  }
 
  
 }
 
-.cardDetail__img {
-  margin: 0 auto;
+.containerImg__img {
+  // margin: 0 auto;
   height: 20rem;
-  margin-bottom: 0.5rem;
+  // margin-bottom: 0.5rem;
+  margin-right: 1rem;
 }
 
 .cardDetail__container{
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include medium {
+    flex-direction: row;
+  }
+
+ 
 }
 
 .cardDetail__title {
@@ -35,7 +50,7 @@
   }
 }
 
-.cardDetail__description{
+.cardDetail__description, .cardDetail__category{
   padding: 0.5rem;
   span{
   font-weight: bold;
@@ -43,4 +58,6 @@
   }
 
 }
+
+
 

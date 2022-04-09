@@ -30,10 +30,9 @@ export const ItemDetailContainer = () => {
       <>
   {productId ? 
     <div className="cardDetail">
-      <div className="cardDetail__container">
+  
          <ItemDetail productId={productId}/>
          <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
-      </div>
     </div> : <Wait/>}
        
       </>

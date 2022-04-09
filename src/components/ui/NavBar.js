@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { CartWidget } from "../CartWidget";
 
 import {NavLink} from 'react-router-dom'
-import logo from "../../images/logo-tiempo-libro.png";
+import logo from "../../images/Copia de logo-tiempo-libro.png";
 import { getCategories } from "../../products/products";
+
 export const NavBar = () => {
+
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [categories, setCategories] = useState([])
 
   const handleClick = () => setClick(!click);
+
   const handleClickDropdown = () => setDropdown(!dropdown);
 
   useEffect(() => {
@@ -22,18 +25,21 @@ export const NavBar = () => {
   return (
     <>
       <header className="header">
-        {/* <h2 className="header__title">Tiempo Libro</h2> */}
+    
+           <NavLink to="/" className='header__link'>
+                <img className="header__logo" src={logo} alt="logo" />
+           </NavLink>
+       
+      
 
-        <NavLink to="/">
-            <img className="header__logo" src={logo} alt="logo" />
-            
-        </NavLink>
         <nav className="header__navegation">
+     
           <div className="header__icon" onClick={handleClick}>
+          
             <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
-          <ul className={click ? "nav active" : "nav"}>
-            <li className="nav__item">
+          <ul className={click ? "nav activeUl" : "nav"}>
+            <li className="nav__item" onClick={handleClick}>
             <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -46,16 +52,15 @@ export const NavBar = () => {
               
             </li>
 
-            <li className="nav__item">
-              <a className="nav__links" href="#" onClick={handleClickDropdown}>
-                {" "}
+            <li className="nav__item" onClick={handleClickDropdown}>
+             
                 Libros <i className="fas fa-angle-down"></i>
-              </a>
+              
               <ul className={dropdown ? "listDropdown hide" : "listDropdown"}>
               
               
-                <li>
-                { categories.map(cat => <NavLink key={cat.id} to={`/category/${cat.id}`}
+                <li >
+                { categories.map(cat => <NavLink  className="nav__links"  onClick={handleClick} key={cat.id} to={`/category/${cat.id}`}
           >{cat.description}</NavLink>)}
                 </li>
            

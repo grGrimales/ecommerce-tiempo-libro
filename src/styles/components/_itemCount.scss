@@ -2,7 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
+ 
+}
+
+.containerAdd__p{
+  background-color: #d8e2dc;
+  border-radius: 0.6rem;
+  padding: 0.3rem;
+  color: black;
 }
 
 .containerAdd__btn {
