@@ -1,42 +1,32 @@
-import React, {useState, useEffect} from 'react';
-import { useParams } from 'react-router-dom'
-import { getProductsById } from '../products/products';
-import { ItemDetail } from './ItemDetail';
-import { ItemCount } from "./ItemCount";
-import { Wait } from './ui/Wait';
-
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getProductsById } from "../products/products";
+import { ItemDetail } from "./ItemDetail";
+import { Wait } from "./ui/Wait";
 
 export const ItemDetailContainer = () => {
+  const [productId, setProducId] = useState();
 
- const handleOnAdd = (quantity) => {
-    console.log(`se agregaron ${quantity} productos al carrito`);
-  };
+  const { id } = useParams();
+  useEffect(() => {
+    getProductsById(id)
+      .then((product) => {
+        setProducId(product);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
 
-    const [productId, setProducId] = useState();
-
-
-    const { id } = useParams()
-    useEffect(() => {
-        getProductsById(id)
-          .then((product) => {
-            setProducId(product);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }, [id]);
-
-    return (
-      <>
-  {productId ? 
-    <div className="cardDetail">
-  
-         <ItemDetail productId={productId}/>
-         <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
-    </div> : <Wait/>}
-       
-      </>
-    )
-
-    
-}
+  return (
+    <>
+      {productId ? (
+        <div className="cardDetail">
+          <ItemDetail productId={productId} />
+        </div>
+      ) : (
+        <Wait />
+      )}
+    </>
+  );
+};

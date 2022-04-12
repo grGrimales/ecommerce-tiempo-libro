@@ -54,7 +54,9 @@ export const NavBar = () => {
 
             <li className="nav__item" onClick={handleClickDropdown}>
              
-                Libros <i className="fas fa-angle-down"></i>
+               {/*  */}
+               
+                  Libros <i className="fas fa-angle-down"></i>
               
               <ul className={dropdown ? "listDropdown hide" : "listDropdown"}>
               
