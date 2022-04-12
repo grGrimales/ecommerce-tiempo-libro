@@ -17,9 +17,7 @@
 }
 
 .containerImg__img {
-  // margin: 0 auto;
   height: 20rem;
-  // margin-bottom: 0.5rem;
   margin-right: 1rem;
 }
 
@@ -61,3 +59,21 @@
 
 
 
+.linkCart{
+  color: $secundary;
+  width: 100%;
+  font-size: 1.25rem;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  background-color: $colorBtn;
+  padding: 0.8rem;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.6;
+  color: $secundary;
+  text-align: center;
+
+  &:hover{
+    opacity: 1;
+  }
+}

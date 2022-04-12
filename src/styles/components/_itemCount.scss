@@ -29,7 +29,7 @@ button {
 
 .containerAdd__btnDecrement,
 .containerAdd__btnIncrement {
-  background: #ff85ba;
+  background: $colorBtn;
   width: 17%;
   padding: 8px;
   border-radius: 8px;
@@ -45,7 +45,7 @@ button {
 
 .containerAdd__btnAdd {
   border: none;
-  background: #ff85ba;
+  background: $colorBtn;
   border-radius: 0.5rem;
   text-align: center;
   text-decoration: none;

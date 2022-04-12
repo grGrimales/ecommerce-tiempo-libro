@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { ItemCount } from "./ItemCount";
 
 export const ItemDetail = ({ productId }) => {
+  const [quantityProduct, setQuantityProduct] = useState(1);
+  const [addedProduct, setAddedProduct] = useState(false);
+
   const handleOnAdd = (quantity) => {
     console.log(`se agregaron ${quantity} productos al carrito`);
+    setQuantityProduct(quantity);
+    setAddedProduct(true);
   };
+
+  console.log(quantityProduct);
 
   const { name, img, description, price, category } = productId;
   return (
     <>
-      <div className="cardDetail__container">
+      <div className="cardDetail__container animate__animated animate__fadeIn">
         <div className="containerImg">
           <img className="containerImg__img" src={img} alt={name} />
         </div>
@@ -29,7 +37,17 @@ export const ItemDetail = ({ productId }) => {
         </div>
       </div>
 
-      <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
+      {addedProduct ? (
+        <NavLink
+          to="/cart"
+          className="linkCart  animate__animated animate__fadeIn"
+        >
+          {" "}
+          Finalizar Compra
+        </NavLink>
+      ) : (
+        <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
+      )}
     </>
   );
 };
