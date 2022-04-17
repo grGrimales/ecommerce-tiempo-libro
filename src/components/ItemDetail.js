@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ItemCount } from "./ItemCount";
+import CartContext from "../context/CartContext";
 
 export const ItemDetail = ({ productId }) => {
-  const [quantityProduct, setQuantityProduct] = useState(1);
+  const { name, img, description, price, category, id, stock } = productId;
   const [addedProduct, setAddedProduct] = useState(false);
+
+  const { addItem, cart, isInCart } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {
     console.log(`se agregaron ${quantity} productos al carrito`);
-    setQuantityProduct(quantity);
     setAddedProduct(true);
+    const productObj = {
+      id,
+      img,
+      name,
+      price,
+      quantity,
+    };
+    addItem(productObj);
+    isInCart(id, quantity);
+    console.log(cart);
   };
 
-  console.log(quantityProduct);
-
-  const { name, img, description, price, category } = productId;
   return (
     <>
       <div className="cardDetail__container animate__animated animate__fadeIn">
@@ -46,7 +55,7 @@ export const ItemDetail = ({ productId }) => {
           Finalizar Compra
         </NavLink>
       ) : (
-        <ItemCount initial={1} stock={15} onAdd={handleOnAdd} />
+        <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
       )}
     </>
   );
