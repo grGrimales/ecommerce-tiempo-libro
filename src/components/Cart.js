@@ -13,7 +13,7 @@ export const Cart = () => {
         <h2>Artículos</h2>
         <div className="animate__animated animate__fadeIn cart">
           {cart.length === 0 ? (
-            <div className="cart__empty">
+            <div className="cart__empty animate__animated animate__fadeIn cart">
               <p>No hay productos en el carrito</p>
 
               <Link className="cart__link" to="/">
