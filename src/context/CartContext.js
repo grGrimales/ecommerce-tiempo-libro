@@ -4,13 +4,12 @@ const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState(2);
+  const [total, setTotal] = useState(0);
+  const [count, setCount] = useState(0);
 
   const addItem = (productToAdd) => {
     setCart([...cart, productToAdd]);
     saveStorage(cart);
-
-    console.log(cart);
   };
 
   useEffect(() => {
@@ -20,13 +19,33 @@ const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
+    getQuantity();
   }, [cart]);
+
+  useEffect(() => {
+    const calculateTotal = cart.reduce(
+      (total, product) => total + product.quantity * product.price,
+      0
+    );
+
+    setTotal(calculateTotal);
+  }, [cart]);
+
+  const getQuantity = () => {
+    let count = 0;
+    cart.forEach((prod) => {
+      count += prod.quantity;
+    });
+
+    setCount(count);
+    return count;
+  };
 
   const isInCart = (id, quantity) => {
     if (cart.some((product) => product.id === id)) {
       const cartUpdate = cart.map((product) => {
         if (product.id === id) {
-          product.quantity = quantity;
+          product.quantity = product.quantity + quantity;
         }
         return product;
       });
@@ -59,6 +78,8 @@ const CartProvider = ({ children }) => {
         removeItem,
         total,
         clear,
+        getQuantity,
+        count,
       }}
     >
       {children}

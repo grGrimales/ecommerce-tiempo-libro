@@ -10,7 +10,6 @@ export const ItemDetail = ({ productId }) => {
   const { addItem, cart, isInCart } = useContext(CartContext);
 
   const handleOnAdd = (quantity) => {
-    console.log(`se agregaron ${quantity} productos al carrito`);
     setAddedProduct(true);
     const productObj = {
       id,
@@ -21,7 +20,6 @@ export const ItemDetail = ({ productId }) => {
     };
     addItem(productObj);
     isInCart(id, quantity);
-    console.log(cart);
   };
 
   return (

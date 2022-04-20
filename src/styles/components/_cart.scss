@@ -12,6 +12,25 @@
     padding: 2rem 0;
 }
 
+.cart__empty{
+    display: flex;
+    flex-direction: column;
+
+    @include medium {
+        flex-direction: row;
+    }
+}
+
+.cart__link{
+    color: $secundary;
+    background-color: $colorBtn;
+    padding: .5rem;
+    margin-top: 2rem;
+    border-radius: .5rem;
+    text-align: center;
+    font-weight: bold;
+}
+
 .cart__products{
   display: flex;
   flex-direction: column;
