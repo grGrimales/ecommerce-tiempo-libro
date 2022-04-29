@@ -1,6 +1,4 @@
 import { useContext, useState } from "react";
-import Swal from "sweetalert2";
-
 import { Link } from "react-router-dom";
 import CartContext from "../context/CartContext";
 
@@ -50,7 +48,7 @@ export const Cart = () => {
                   type="button"
                   onClick={() => removeItem(product.id)}
                 >
-                  X
+                  <i className="fas fa-times-circle"></i>
                 </button>
               </div>
             ))
@@ -66,13 +64,16 @@ export const Cart = () => {
                   Total a pagar S/
                   <span>{total}</span>
                 </p>
+                <button className="resume__btn" type="submit" onClick={clear}>
+                  Vaciar carrito
+                </button>
               </>
             </div>
-            <div className="resume__containerBtn">
-              <button className="resume__btn" type="submit" onClick={clear}>
-                Vaciar carrito
-              </button>
-            </div>
+            <div className="resume__containerBtn"></div>
+
+            <Link to="/order" className="resume__btn btnFinaly">
+              Proceder a pagar
+            </Link>
           </div>
         ) : null}
       </main>

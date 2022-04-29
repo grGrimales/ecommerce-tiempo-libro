@@ -28,6 +28,7 @@ const CartProvider = ({ children }) => {
       0
     );
 
+    localStorage.setItem("total", calculateTotal);
     setTotal(calculateTotal);
   }, [cart]);
 

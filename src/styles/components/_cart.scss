@@ -34,7 +34,6 @@
 .cart__products{
   display: flex;
   flex-direction: column;
-//   align-items: center;
   border-bottom: 1px solid #cfcfcf;
   padding: 3rem 0;
   position: relative;
@@ -104,6 +103,7 @@
       }
 }
 
+
 .cart__btnDelete{
   all: unset;
   position: absolute;
@@ -111,12 +111,12 @@
   right: 1rem;
   font-weight: bold;
   color: red;
+  opacity: .6;
 
   &:hover{
     cursor: pointer;
   }
 }
-
 
 .resume{
     display: flex;
@@ -129,6 +129,10 @@
     border-radius: 1rem;
     margin-left: 2rem;
     height: 12rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .resume__containerBtn{
@@ -141,8 +145,18 @@
     padding: .5rem;
     border-radius: .5rem;
     opacity: .6;
+    width: 100%;
 
     &:hover{
         opacity: 1;
     }
+}
+
+.btnFinaly{
+    background-color: green;
+    width: 80%;
+    margin-left: 2.7rem;
+    color: $secundary;
+    text-align: center;
+
 }

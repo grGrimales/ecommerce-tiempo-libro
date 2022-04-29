@@ -4,6 +4,8 @@ import { NavBar } from "./components/ui/NavBar";
 import { CartProvider } from "./context/CartContext";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cart } from "./components/Cart";
+import { OrdenService } from "./components/OrdenService";
+import { GeneratedOrder } from "./components/GeneratedOrder";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
               path="/category/:categoryId"
               element={<ItemListContainer />}
             />
+            <Route path="/order" element={<OrdenService />} />
+            <Route path="/order-gererated" element={<GeneratedOrder />} />
 
             <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route
