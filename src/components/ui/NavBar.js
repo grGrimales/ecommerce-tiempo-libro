@@ -3,24 +3,12 @@ import { CartWidget } from "../CartWidget";
 
 import { NavLink } from "react-router-dom";
 import logo from "../../images/Copia de logo-tiempo-libro.png";
-import {
-  getDocs,
-  collection,
-  query,
-  where,
-  collectionGroup,
-} from "firebase/firestore";
+import { getDocs, collection, query } from "firebase/firestore";
 import { firestoreDb } from "../services/firebase";
 
 export const NavBar = () => {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
-
-  let categoryList = [];
-
-  const onlyUnique = (value, index, self) => {
-    return self.indexOf(value) === index;
-  };
 
   const [categories, setCategories] = useState([]);
 

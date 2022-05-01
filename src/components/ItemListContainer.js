@@ -1,40 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { useAsync } from "../hooks/useAsync";
 import { ItemList } from "./ItemList";
+import { getProducts } from "./services/firebase/firestore";
 import { Wait } from "./ui/Wait";
-import { firestoreDb } from "./services/firebase";
 
 export const ItemListContainer = ({ greetings }) => {
   const { categoryId } = useParams();
 
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const productsRef = collection(firestoreDb, "products");
-    const collectionRef = categoryId
-      ? query(productsRef, where("category", "array-contains", categoryId))
-      : productsRef;
+  useAsync(
+    setLoading,
+    () => getProducts(categoryId),
+    setProducts,
+    () => console.log("Hubo un error en item List container"),
+    [categoryId]
+  );
 
-    getDocs(collectionRef).then((response) => {
-      const products = response.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() };
-      });
-      setProducts(products);
-    });
-  }, [categoryId]);
+  if (loading) return <Wait />;
 
   return (
     <>
-      {products ? (
-        <div className="listContainer">
-          <h1 className="textCenter">{greetings}</h1>
+      <div className="listContainer">
+        <h1 className="textCenter">{greetings}</h1>
 
+        {products.length === 0 ? (
+          <h2>No hay productos</h2>
+        ) : (
           <ItemList products={products} />
-        </div>
-      ) : (
-        <Wait />
-      )}
+        )}
+      </div>
     </>
   );
 };

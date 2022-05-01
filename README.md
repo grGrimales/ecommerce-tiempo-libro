@@ -1,6 +1,24 @@
+# Tiempo Libro
+
+### Tienda Online de libros, creado por Grediana Rojas.
+
+En esta tienda online usted podra:
+
+- comprar libros.
+- Más nada...
+
+# Tiempo Libro
+
+### Tienda Online de libros, creado por la super sexy Grediana Rojas.
+
+En esta tienda online usted podra:
+
+- comprar libros.
+- Más nada...
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png){width='100px'}
 
 ## Available Scripts
 
