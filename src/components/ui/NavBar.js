@@ -3,8 +3,7 @@ import { CartWidget } from "../CartWidget";
 
 import { NavLink } from "react-router-dom";
 import logo from "../../images/Copia de logo-tiempo-libro.png";
-import { getDocs, collection, query } from "firebase/firestore";
-import { firestoreDb } from "../services/firebase";
+import { getCategories } from "../services/firebase/firestore";
 
 export const NavBar = () => {
   const [click, setClick] = useState(false);
@@ -17,11 +16,8 @@ export const NavBar = () => {
   const handleClickDropdown = () => setDropdown(!dropdown);
 
   useEffect(() => {
-    getDocs(query(collection(firestoreDb, "categories"))).then((response) => {
-      const categories = response.docs.map((doc) => {
-        return { id: doc.id, ...doc.data() };
-      });
-      setCategories(categories);
+    getCategories().then((result) => {
+      setCategories(result);
     });
   }, []);
 

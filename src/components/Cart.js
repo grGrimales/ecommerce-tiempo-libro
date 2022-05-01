@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import CartContext from "../context/CartContext";
 
 export const Cart = () => {
-  const { cart, removeItem, total, clear } = useContext(CartContext);
+  const { cart, removeItem, total, clear, decrementUnits, incrementUnits } =
+    useContext(CartContext);
 
   return (
     <>
@@ -33,10 +34,23 @@ export const Cart = () => {
                   <p className="cart__name">{product.name}</p>
 
                   <div className="cart__quantity">
-                    <p>Cantidad: {product.quantity}</p>
+                    <p>Cantidad: </p>
+                    <button
+                      className="cart__btnDecrement"
+                      onClick={() => decrementUnits(product.id)}
+                    >
+                      -
+                    </button>
+                    <span> {product.quantity}</span>
+                    <button
+                      className="cart__btnIncrement"
+                      onClick={() => incrementUnits(product.id)}
+                    >
+                      +
+                    </button>
                   </div>
                   <p className="cart__price">
-                    S/ <span>{product.price}</span>
+                    Precio: S/ <span>{product.price}</span>
                   </p>
                   <p className="cart__subtotal">
                     Subtotal: S/

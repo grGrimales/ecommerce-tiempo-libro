@@ -22,3 +22,20 @@ export const getProducts = (categoryId) => {
       });
   });
 };
+
+export const getCategories = () => {
+  const collectionRef = collection(firestoreDb, "categories");
+
+  return new Promise((resolve, reject) => {
+    getDocs(query(collectionRef))
+      .then((response) => {
+        const categories = response.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        resolve(categories);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};

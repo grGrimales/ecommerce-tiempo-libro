@@ -55,6 +55,32 @@ const CartProvider = ({ children }) => {
     }
   };
 
+  const incrementUnits = (id) => {
+    const cartUpdate = cart.map((product) => {
+      if (product.id === id && product.quantity < product.stock) {
+        product.quantity = product.quantity + 1;
+        console.log(product.quantity);
+      } else {
+        console.log("No contamos con mas unidades disponibles");
+      }
+      return product;
+    });
+    setCart(cartUpdate);
+    saveStorage(cartUpdate);
+  };
+
+  const decrementUnits = (id) => {
+    const cartUpdate = cart.map((product) => {
+      if (product.id === id && product.quantity > 1) {
+        product.quantity = product.quantity - 1;
+        console.log(product.quantity);
+      }
+      return product;
+    });
+    setCart(cartUpdate);
+    saveStorage(cartUpdate);
+  };
+
   const removeItem = (id) => {
     const cartUpdate = cart.filter((product) => product.id !== id);
     setCart(cartUpdate);
@@ -81,6 +107,8 @@ const CartProvider = ({ children }) => {
         clear,
         getQuantity,
         count,
+        decrementUnits,
+        incrementUnits,
       }}
     >
       {children}

@@ -16,6 +16,7 @@ export const ItemDetail = ({ productId }) => {
       img,
       name,
       price,
+      stock,
       quantity,
     };
     addItem(productObj);

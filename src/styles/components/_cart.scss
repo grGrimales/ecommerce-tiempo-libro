@@ -1,18 +1,18 @@
-.containerCart{
+.containerCart {
     display: flex;
-   flex-direction: column;
-   padding: 1rem;
+    flex-direction: column;
+    padding: 1rem;
 
     @include medium {
-       flex-direction: row;
+        flex-direction: row;
     }
 }
 
-.cart{
+.cart {
     padding: 2rem 0;
 }
 
-.cart__empty{
+.cart__empty {
     display: flex;
     flex-direction: column;
 
@@ -21,7 +21,7 @@
     }
 }
 
-.cart__link{
+.cart__link {
     color: $secundary;
     background-color: $colorBtn;
     padding: .5rem;
@@ -31,21 +31,21 @@
     font-weight: bold;
 }
 
-.cart__products{
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #cfcfcf;
-  padding: 3rem 0;
-  position: relative;
+.cart__products {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #cfcfcf;
+    padding: 3rem 0;
+    position: relative;
 
-  @include medium {
-    flex-direction: row;
-    gap: 1rem;
+    @include medium {
+        flex-direction: row;
+        gap: 1rem;
+    }
 }
-}
 
 
-.cart__img{
+.cart__img {
     width: 14rem;
     height: 20rem
 }
@@ -54,76 +54,98 @@
 .cart__products:last-of-type {
     border-bottom: none;
 
-    p{
+    p {
         margin: 0 0 1rem 0;
     }
 }
 
-.cart__name{
+.cart__name {
     font-size: 1.3rem;
     font-weight: 700;
-    @include medium{
-       
-        font-size: 2.2rem;                                                                                                                     
+
+    @include medium {
+
+        font-size: 2.2rem;
     }
-   
+
 }
 
-.cart__quantity{
+.cart__quantity {
     display: flex;
     align-items: center;
     margin-bottom: .5rem;
 
-    p{
+    p {
         margin: 0;
+        font-weight: bold;
+    }
+
+    span {
+        align-self: center;
+        font-size: 1.3rem;
+        padding: .5rem;
     }
 }
 
-.cart__price{
-  font-weight: 700;
-  color: #e99401;
+.cart__price {
+    font-weight: 700;
+    color: green;
 
-  span{
-    font-size: 1.3rem;
-    @include medium{
-        font-size: 2.4rem;
+    span {
+        font-size: 1.3rem;
+
+        @include medium {
+            font-size: 2.4rem;
+        }
     }
-}
-  
+
 }
 
-.cart__subtotal{
+.cart__subtotal {
     font-weight: 700;
 
     span {
         font-size: 1.3rem;
-        @include medium{
+
+        @include medium {
             font-size: 2.4rem;
         }
-      }
+    }
 }
 
 
-.cart__btnDelete{
-  all: unset;
-  position: absolute;
-  top: 0.3rem;
-  right: 1rem;
-  font-weight: bold;
-  color: red;
-  opacity: .6;
+.cart__btnDelete {
+    all: unset;
+    position: absolute;
+    top: 0.3rem;
+    right: 1rem;
+    font-weight: bold;
+    color: red;
+    opacity: .6;
 
-  &:hover{
-    cursor: pointer;
-  }
+    &:hover {
+        cursor: pointer;
+    }
 }
 
-.resume{
+.cart__btnDecrement,
+.cart__btnIncrement {
+    background: $colorBtn;
+    width: 8%;
+    padding: .5rem;
+    border-radius: .5rem;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    opacity: 0.8;
+}
+
+.resume {
     display: flex;
     flex-direction: column;
 
 }
-.resume__description{
+
+.resume__description {
     background-color: #F9FAFB;
     padding: 3rem;
     border-radius: 1rem;
@@ -135,11 +157,11 @@
     justify-content: space-around;
 }
 
-.resume__containerBtn{
+.resume__containerBtn {
     align-self: flex-end;
 }
 
-.resume__btn{
+.resume__btn {
     background-color: red;
     font-size: 1.3rem;
     padding: .5rem;
@@ -147,12 +169,12 @@
     opacity: .6;
     width: 100%;
 
-    &:hover{
+    &:hover {
         opacity: 1;
     }
 }
 
-.btnFinaly{
+.btnFinaly {
     background-color: green;
     width: 80%;
     margin-left: 2.7rem;

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import CartContext from "../context/CartContext";
 import { Wait } from "./ui/Wait";
 
@@ -18,7 +17,6 @@ import { firestoreDb } from "./services/firebase/index";
 import { GeneratedOrder } from "./GeneratedOrder";
 
 export const OrdenService = () => {
-  const navigate = useNavigate();
   const { clear } = useContext(CartContext);
 
   const [error, setError] = useState();
@@ -137,8 +135,8 @@ export const OrdenService = () => {
     <>
       {!showOrder ? (
         <div className="containerOrden">
-          <form>
-            <div className="containerForm">
+          <div className="containerForm">
+            <form>
               <h2 className="containerForm__title">Datos personales</h2>
               <div className="formGroup">
                 <label htmlFor="name">Nombre</label>
@@ -204,8 +202,8 @@ export const OrdenService = () => {
                   {message}
                 </div>
               )}
-            </div>
-          </form>
+            </form>
+          </div>
           <div className="containerCheckout">
             <h3 className="containerCheckout__title">Resúmen de la compra</h3>
 
