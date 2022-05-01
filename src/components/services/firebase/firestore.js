@@ -1,5 +1,12 @@
 import { firestoreDb } from "./index";
-import { getDocs, query, collection, where } from "firebase/firestore";
+import {
+  getDocs,
+  query,
+  collection,
+  where,
+  getDoc,
+  doc,
+} from "firebase/firestore";
 import { createAdaptedProductFromFirestore } from "../../../adapters/productAdapter";
 
 export const getProducts = (categoryId) => {
@@ -37,5 +44,19 @@ export const getCategories = () => {
       .catch((error) => {
         reject(error);
       });
+  });
+};
+
+export const getProductById = (id) => {
+  const docRef = doc(firestoreDb, "products", id);
+  return new Promise((resolve, reject) => {
+    try {
+      getDoc(docRef).then((response) => {
+        const product = { id: response.id, ...response.data() };
+        resolve(product);
+      });
+    } catch (e) {
+      reject(e);
+    }
   });
 };

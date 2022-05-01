@@ -5,16 +5,16 @@ import { getDoc, doc } from "firebase/firestore";
 
 import { ItemDetail } from "./ItemDetail";
 import { Wait } from "./ui/Wait";
+import { getProductById } from "./services/firebase/firestore";
 
 export const ItemDetailContainer = () => {
   const [productId, setProducId] = useState();
 
   const { id } = useParams();
-  useEffect(() => {
-    getDoc(doc(firestoreDb, "products", id)).then((response) => {
-      const product = { id: response.id, ...response.data() };
 
-      setProducId(product);
+  useEffect(() => {
+    getProductById(id).then((result) => {
+      setProducId(result);
     });
   }, [id]);
 
