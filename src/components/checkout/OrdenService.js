@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import CartContext from "../context/CartContext";
-import { Wait } from "./ui/Wait";
+import CartContext from "../../context/CartContext";
+import { Wait } from "../ui/Wait";
 
-import { useForm } from "../hooks/useForm";
+import { useForm } from "../../hooks/useForm";
 
 import {
   getDocs,
@@ -13,8 +13,9 @@ import {
   documentId,
   addDoc,
 } from "firebase/firestore";
-import { firestoreDb } from "./services/firebase/index";
+import { firestoreDb } from "../services/firebase/index";
 import { GeneratedOrder } from "./GeneratedOrder";
+import { Link } from "react-router-dom";
 
 export const OrdenService = () => {
   const { clear } = useContext(CartContext);
@@ -22,6 +23,7 @@ export const OrdenService = () => {
   const [error, setError] = useState();
   const [message, setMessage] = useState();
   const [showOrder, setShowOrder] = useState(false);
+  const [showOutStockError, setShowOutStockError] = useState(false);
 
   const removeError = () => {
     setError(false);
@@ -70,6 +72,7 @@ export const OrdenService = () => {
           )?.quantity;
 
           if (dataDoc.stock >= prodQuantity) {
+            console.log(dataDoc.stock >= prodQuantity);
             batch.update(doc.ref, { stock: dataDoc.stock - prodQuantity });
           } else {
             outOfStock.push({ id: doc.id, ...dataDoc });
@@ -81,6 +84,8 @@ export const OrdenService = () => {
           const collectionRef = collection(firestoreDb, "orders");
           return addDoc(collectionRef, objOrder);
         } else {
+          console.log("No genera orden");
+
           return Promise.reject({
             name: "outOfStockError",
             products: outOfStock,
@@ -89,15 +94,15 @@ export const OrdenService = () => {
       })
       .then(({ id }) => {
         batch.commit();
-
-        JSON.stringify(localStorage.setItem("idOrder", id));
+        localStorage.setItem("idOrder", id);
+        setShowOrder(true);
       })
       .catch((error) => {
-        console.log(error);
+        localStorage.setItem("outOfStock", JSON.stringify(error));
+        setShowOutStockError(true);
       })
       .finally(() => {
         setLoading(false);
-        setShowOrder(true);
         clear();
       });
   };
@@ -110,6 +115,30 @@ export const OrdenService = () => {
     );
   }
 
+  if (cart === []) {
+    return <h2>No hay productos</h2>;
+  }
+
+  if (showOutStockError) {
+    const outOfStock = JSON.parse(localStorage.getItem("outOfStock"));
+    const { products } = outOfStock;
+
+    return (
+      <>
+        <h2 className="titleOrder">
+          No pudimos Generar su orden. No contamos con stock para:{" "}
+        </h2>
+        {products.map((product) => (
+          <p className="nameProduct" key={product.id}>
+            *{product.name}
+          </p>
+        ))}
+        <Link className="cart__link linkOutOfStock" to="/">
+          <i className="fas fa-arrow-alt-left"></i>Volver a Inicio
+        </Link>
+      </>
+    );
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     if (

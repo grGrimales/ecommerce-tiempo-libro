@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useAsync } from "../hooks/useAsync";
+import { useAsync } from "../../hooks/useAsync";
 import { ItemList } from "./ItemList";
-import { getProducts } from "./services/firebase/firestore";
-import { Wait } from "./ui/Wait";
+import { getProducts } from "../services/firebase/firestore";
+import { Wait } from "../ui/Wait";
 
 export const ItemListContainer = ({ greetings }) => {
   const { categoryId } = useParams();

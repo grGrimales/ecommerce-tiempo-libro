@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useContext } from "react";
-import CartContext from "../context/CartContext";
+import CartContext from "../../context/CartContext";
 
 export const CartWidget = () => {
   const { count } = useContext(CartContext);

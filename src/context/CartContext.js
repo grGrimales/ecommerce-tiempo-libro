@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import Swal from "sweetalert2";
 
 const CartContext = createContext();
 
@@ -59,9 +60,12 @@ const CartProvider = ({ children }) => {
     const cartUpdate = cart.map((product) => {
       if (product.id === id && product.quantity < product.stock) {
         product.quantity = product.quantity + 1;
-        console.log(product.quantity);
       } else {
-        console.log("No contamos con mas unidades disponibles");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `No contamos con más unidades disponibles de ${product.name}`,
+        });
       }
       return product;
     });
@@ -73,7 +77,6 @@ const CartProvider = ({ children }) => {
     const cartUpdate = cart.map((product) => {
       if (product.id === id && product.quantity > 1) {
         product.quantity = product.quantity - 1;
-        console.log(product.quantity);
       }
       return product;
     });

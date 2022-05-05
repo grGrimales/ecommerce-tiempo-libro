@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CartWidget } from "../CartWidget";
+import { CartWidget } from "../cart/CartWidget";
 
 import { NavLink } from "react-router-dom";
 import logo from "../../images/Copia de logo-tiempo-libro.png";
@@ -63,19 +63,6 @@ export const NavBar = () => {
               </ul>
             </li>
 
-            <li className="nav__item">
-              <a className="nav__links" href="#">
-                {" "}
-                Nosotros
-              </a>
-            </li>
-
-            <li className="nav__item">
-              <a className="nav__links" href="#">
-                {" "}
-                Contacto
-              </a>
-            </li>
             <li className="nav__item">
               <NavLink
                 to="/cart"

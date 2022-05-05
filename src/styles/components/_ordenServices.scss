@@ -9,8 +9,6 @@
 }
 
 .containerForm {
-  // display: flex;
-  // flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 3rem;
   margin: .5rem;
@@ -157,4 +155,19 @@ textarea:focus {
       transform: scale(1.2, 1.2);
     }
   }
+}
+
+.titleOrder {
+  text-align: center;
+  padding: 2rem;
+  padding-bottom: 1rem;
+}
+
+.nameProduct {
+  padding: 1rem;
+  font-size: 1.3rem;
+}
+
+.linkOutOfStock {
+  margin: 0 auto;
 }

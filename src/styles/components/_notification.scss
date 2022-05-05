@@ -1,0 +1,23 @@
+.notification {
+    position: absolute;
+    top: 20rem;
+    right: 5px;
+    width: auto;
+    height: auto;
+    padding: 10px 20px 10px 20px;
+    border-radius: .8rem;
+
+    @include medium {
+        top: 7.2rem;
+    }
+}
+
+.success {
+
+    background-color: #99d98c;
+}
+
+.error {
+
+    background-color: red;
+}

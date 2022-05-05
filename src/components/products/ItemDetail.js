@@ -1,13 +1,15 @@
 import React, { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ItemCount } from "./ItemCount";
-import CartContext from "../context/CartContext";
+import CartContext from "../../context/CartContext";
+import NotificationContext from "../../notification/Notification";
 
 export const ItemDetail = ({ productId }) => {
   const { name, img, description, price, category, id, stock } = productId;
   const [addedProduct, setAddedProduct] = useState(false);
 
-  const { addItem, cart, isInCart } = useContext(CartContext);
+  const { addItem, isInCart } = useContext(CartContext);
+  const { setNotification } = useContext(NotificationContext);
 
   const handleOnAdd = (quantity) => {
     setAddedProduct(true);
@@ -21,8 +23,8 @@ export const ItemDetail = ({ productId }) => {
     };
     addItem(productObj);
     isInCart(id, quantity);
+    setNotification("success", `Se agregó ${quantity} correctamente`);
   };
-
   return (
     <>
       <div className="cardDetail__container animate__animated animate__fadeIn">

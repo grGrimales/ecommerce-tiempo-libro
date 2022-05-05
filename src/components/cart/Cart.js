@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import CartContext from "../context/CartContext";
+import CartContext from "../../context/CartContext";
 
 export const Cart = () => {
   const { cart, removeItem, total, clear, decrementUnits, incrementUnits } =
