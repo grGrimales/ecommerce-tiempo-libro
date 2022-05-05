@@ -15,11 +15,10 @@ import {
 } from "firebase/firestore";
 import { firestoreDb } from "../services/firebase/index";
 import { GeneratedOrder } from "./GeneratedOrder";
-import { Link } from "react-router-dom";
+import { ErrorOutOfStock } from "./ErrorOutOfStock";
 
 export const OrdenService = () => {
   const { clear } = useContext(CartContext);
-
   const [error, setError] = useState();
   const [message, setMessage] = useState();
   const [showOrder, setShowOrder] = useState(false);
@@ -72,7 +71,6 @@ export const OrdenService = () => {
           )?.quantity;
 
           if (dataDoc.stock >= prodQuantity) {
-            console.log(dataDoc.stock >= prodQuantity);
             batch.update(doc.ref, { stock: dataDoc.stock - prodQuantity });
           } else {
             outOfStock.push({ id: doc.id, ...dataDoc });
@@ -84,8 +82,6 @@ export const OrdenService = () => {
           const collectionRef = collection(firestoreDb, "orders");
           return addDoc(collectionRef, objOrder);
         } else {
-          console.log("No genera orden");
-
           return Promise.reject({
             name: "outOfStockError",
             products: outOfStock,
@@ -123,22 +119,9 @@ export const OrdenService = () => {
     const outOfStock = JSON.parse(localStorage.getItem("outOfStock"));
     const { products } = outOfStock;
 
-    return (
-      <>
-        <h2 className="titleOrder">
-          No pudimos Generar su orden. No contamos con stock para:{" "}
-        </h2>
-        {products.map((product) => (
-          <p className="nameProduct" key={product.id}>
-            *{product.name}
-          </p>
-        ))}
-        <Link className="cart__link linkOutOfStock" to="/">
-          <i className="fas fa-arrow-alt-left"></i>Volver a Inicio
-        </Link>
-      </>
-    );
+    return <ErrorOutOfStock products={products} />;
   }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (

@@ -2,7 +2,7 @@ import { ItemDetailContainer } from "./components/products/ItemDetailContainer";
 import { ItemListContainer } from "./components/products/ItemListContainer";
 import { NavBar } from "./components/ui/NavBar";
 import { CartProvider } from "./context/CartContext";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter as BrowserRouter, Routes, Route } from "react-router-dom";
 import { Cart } from "./components/cart/Cart";
 import { OrdenService } from "./components/checkout/OrdenService";
 import { GeneratedOrder } from "./components/checkout/GeneratedOrder";
