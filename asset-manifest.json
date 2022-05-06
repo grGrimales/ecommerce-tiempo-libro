@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/ecommerce-tiempo-libro/static/css/main.505111e1.css",
-    "main.js": "/ecommerce-tiempo-libro/static/js/main.b0ed1ca4.js",
+    "main.js": "/ecommerce-tiempo-libro/static/js/main.4706d91f.js",
     "index.html": "/ecommerce-tiempo-libro/index.html",
     "main.505111e1.css.map": "/ecommerce-tiempo-libro/static/css/main.505111e1.css.map",
-    "main.b0ed1ca4.js.map": "/ecommerce-tiempo-libro/static/js/main.b0ed1ca4.js.map"
+    "main.4706d91f.js.map": "/ecommerce-tiempo-libro/static/js/main.4706d91f.js.map"
   },
   "entrypoints": [
     "static/css/main.505111e1.css",
-    "static/js/main.b0ed1ca4.js"
+    "static/js/main.4706d91f.js"
   ]
 }
