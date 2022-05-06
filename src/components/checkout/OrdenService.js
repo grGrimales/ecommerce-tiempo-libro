@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import validator from "validator";
+
 import CartContext from "../../context/CartContext";
 import { Wait } from "../ui/Wait";
 
@@ -131,6 +133,12 @@ export const OrdenService = () => {
     ) {
       setError(true);
       setMessage("*Todos los campos son obligatorios");
+      setTimeout(() => {
+        removeError();
+      }, 3000);
+    } else if (!validator.isEmail(email)) {
+      setError(true);
+      setMessage("*Ingrese un correo válido");
       setTimeout(() => {
         removeError();
       }, 3000);
