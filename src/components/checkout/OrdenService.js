@@ -69,7 +69,6 @@ export const OrdenService = () => {
           const prodQuantity = cart.find(
             (prod) => prod.id === doc.id
           )?.quantity;
-          console.log(prodQuantity);
           if (dataDoc.stock >= prodQuantity) {
             batch.update(doc.ref, { stock: dataDoc.stock - prodQuantity });
           } else {
